@@ -1,0 +1,22 @@
+\documentclass[a4paper,14pt]{extarticle}
+\usepackage{cmap}
+\usepackage[cp1251]{inputenc}
+\usepackage[english]{babel}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{indentfirst}
+\usepackage{amssymb}
+\begin{document}
+\begin{table}[]
+	\centering
+	\caption{Functors}
+	\label{my-label}
+	\begin{tabular}{|l|l|l|} \hline
+		NameSpecificFunctor    & DescFunctor                          & PropertiesFunctor          \\ \hline
+		$T_1$                  & group                                & LowerRegular               \\ \hline
+		$T_2$                  & subgroups                            & LowerRegular               \\ \hline
+		$T_3$                  & 1                                    & LowerRegular               \\ \hline
+	\end{tabular}
+\end{table}
+\end{document}

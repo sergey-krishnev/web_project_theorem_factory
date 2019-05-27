@@ -24,4 +24,10 @@ public class FunctorProperty {
             inverseJoinColumns = { @JoinColumn(name = "functor_id")})
     private List<Functor> functors = new ArrayList<>();
 
+    public FunctorProperty() {
+    }
+
+    public FunctorProperty(@NotNull String name) {
+        this.name = name;
+    }
 }
