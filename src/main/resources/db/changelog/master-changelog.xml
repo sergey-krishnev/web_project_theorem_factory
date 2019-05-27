@@ -46,4 +46,131 @@
                                  referencedTableName="functor" referencedColumnNames="id"/>
 
     </changeSet>
+
+    <changeSet id="2" author="user">
+
+        <createTable tableName="relation">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="relation_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="relation_property_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="relation_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="relation_property">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="relation_detail" baseColumnNames="relation_property_id"
+                                 constraintName="fk_relation_property_id_relation_detail"
+                                 referencedTableName="relation_property" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="relation_detail" baseColumnNames="relation_id"
+                                 constraintName="fk_relation_id_relation_detail"
+                                 referencedTableName="relation" referencedColumnNames="id"/>
+
+    </changeSet>
+
+    <changeSet id="3" author="user">
+
+        <createTable tableName="class">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="class_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="class_property_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="class_property">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="class_detail" baseColumnNames="class_property_id"
+                                 constraintName="fk_class_property_id_class_detail"
+                                 referencedTableName="class_property" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="class_detail" baseColumnNames="class_id"
+                                 constraintName="fk_class_id_class_detail"
+                                 referencedTableName="class" referencedColumnNames="id"/>
+
+    </changeSet>
+
+    <changeSet id="4" author="user">
+        <createTable tableName="tmodel">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="functor_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="relation_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="template">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="varchar(90)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tmodel_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
 </databaseChangeLog>
