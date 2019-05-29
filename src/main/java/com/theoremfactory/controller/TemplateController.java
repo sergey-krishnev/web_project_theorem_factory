@@ -1,7 +1,6 @@
 package com.theoremfactory.controller;
 
-
-import com.theoremfactory.model.Functor;
+import com.theoremfactory.model.Template;
 import com.theoremfactory.service.BasicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,47 +13,47 @@ import java.util.Optional;
 
 @RestController
 @Slf4j
-public class FunctorController {
+public class TemplateController {
 
-    private final BasicService<Functor> basicService;
+    private final BasicService<Template> basicService;
 
     @Autowired
-    public FunctorController(BasicService<Functor> basicService) {
+    public TemplateController(BasicService<Template> basicService) {
         this.basicService = basicService;
     }
 
-    @GetMapping(value = "/functors")
-    public ResponseEntity<List<Functor>> get() {
+    @GetMapping(value = "/templates")
+    public ResponseEntity<List<Template>> get() {
         return ResponseEntity.ok(basicService.getAll());
     }
 
-    @PostMapping(value = "/functors")
-    public ResponseEntity<Functor> add(@Valid @RequestBody Functor functor) {
-        return ResponseEntity.ok(basicService.save(functor));
+    @PostMapping(value = "/templates")
+    public ResponseEntity<Template> add(@Valid @RequestBody Template template) {
+        return ResponseEntity.ok(basicService.save(template));
     }
 
-    @GetMapping(value = "/functors/{id}")
-    public ResponseEntity<Functor> findById(@PathVariable Long id) {
-        Optional<Functor> stock = basicService.findById(id);
+    @GetMapping(value = "/templates/{id}")
+    public ResponseEntity<Template> findById(@PathVariable Long id) {
+        Optional<Template> stock = basicService.findById(id);
         if (!stock.isPresent()) {
             log.error("Id " + id + " is not existed");
-           return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().build();
         }
 
         return ResponseEntity.ok(stock.get());
     }
 
-    @PutMapping("/functors/{id}")
-    public ResponseEntity<Functor> update(@PathVariable Long id, @Valid @RequestBody Functor functor) {
+    @PutMapping("/templates/{id}")
+    public ResponseEntity<Template> update(@PathVariable Long id, @Valid @RequestBody Template template) {
         if (!basicService.findById(id).isPresent()) {
             log.error("Id " + id + " is not existed");
-           return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok(basicService.save(functor));
+        return ResponseEntity.ok(basicService.save(template));
     }
 
-    @DeleteMapping("/functors/{id}")
+    @DeleteMapping("/templates/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         if (!basicService.findById(id).isPresent()) {
             log.error("Id " + id + " is not existed");

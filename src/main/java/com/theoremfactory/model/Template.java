@@ -1,5 +1,6 @@
 package com.theoremfactory.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Template {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tmodel_id")
+    @JsonIgnore
     private Tmodel tmodel;
 
 }

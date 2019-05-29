@@ -239,4 +239,59 @@
         </insert>
     </changeSet>
 
+    <changeSet id="insertRelationProperty" author="user">
+        <insert tableName="relation_property">
+            <column name="name" value="Projective"/>
+        </insert>
+        <insert tableName="relation_property">
+            <column name="name" value="F-related"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertRelationDetail" author="user">
+        <insert tableName="relation_detail">
+            <column name="relation_property_id" value="1"/>
+            <column name="relation_id" value="1"/>
+        </insert>
+        <insert tableName="relation_detail">
+            <column name="relation_property_id" value="1"/>
+            <column name="relation_id" value="2"/>
+        </insert>
+        <insert tableName="relation_detail">
+            <column name="relation_property_id" value="2"/>
+            <column name="relation_id" value="1"/>
+        </insert>
+        <insert tableName="relation_detail">
+            <column name="relation_property_id" value="2"/>
+            <column name="relation_id" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertClassProperty" author="user">
+        <insert tableName="class_property">
+            <column name="name" value="Solvable"/>
+        </insert>
+        <insert tableName="class_property">
+            <column name="name" value="Saturated"/>
+        </insert>
+        <insert tableName="class_property">
+            <column name="name" value="Homomorph"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertClassDetail" author="user">
+        <insert tableName="class_detail">
+            <column name="class_property_id" value="1"/>
+            <column name="class_id" value="1"/>
+        </insert>
+        <insert tableName="class_detail">
+            <column name="class_property_id" value="2"/>
+            <column name="class_id" value="1"/>
+        </insert>
+        <insert tableName="class_detail">
+            <column name="class_property_id" value="3"/>
+            <column name="class_id" value="1"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

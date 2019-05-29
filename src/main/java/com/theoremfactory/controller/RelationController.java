@@ -1,7 +1,6 @@
 package com.theoremfactory.controller;
 
-
-import com.theoremfactory.model.Functor;
+import com.theoremfactory.model.Relation;
 import com.theoremfactory.service.BasicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,47 +13,47 @@ import java.util.Optional;
 
 @RestController
 @Slf4j
-public class FunctorController {
+public class RelationController {
 
-    private final BasicService<Functor> basicService;
+    private final BasicService<Relation> basicService;
 
     @Autowired
-    public FunctorController(BasicService<Functor> basicService) {
+    public RelationController(BasicService<Relation> basicService) {
         this.basicService = basicService;
     }
 
-    @GetMapping(value = "/functors")
-    public ResponseEntity<List<Functor>> get() {
+    @GetMapping(value = "/relations")
+    public ResponseEntity<List<Relation>> get() {
         return ResponseEntity.ok(basicService.getAll());
     }
 
-    @PostMapping(value = "/functors")
-    public ResponseEntity<Functor> add(@Valid @RequestBody Functor functor) {
-        return ResponseEntity.ok(basicService.save(functor));
+    @PostMapping(value = "/relations")
+    public ResponseEntity<Relation> add(@Valid @RequestBody Relation relation) {
+        return ResponseEntity.ok(basicService.save(relation));
     }
 
-    @GetMapping(value = "/functors/{id}")
-    public ResponseEntity<Functor> findById(@PathVariable Long id) {
-        Optional<Functor> stock = basicService.findById(id);
+    @GetMapping(value = "/relations/{id}")
+    public ResponseEntity<Relation> findById(@PathVariable Long id) {
+        Optional<Relation> stock = basicService.findById(id);
         if (!stock.isPresent()) {
             log.error("Id " + id + " is not existed");
-           return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().build();
         }
 
         return ResponseEntity.ok(stock.get());
     }
 
-    @PutMapping("/functors/{id}")
-    public ResponseEntity<Functor> update(@PathVariable Long id, @Valid @RequestBody Functor functor) {
+    @PutMapping("/relations/{id}")
+    public ResponseEntity<Relation> update(@PathVariable Long id, @Valid @RequestBody Relation relation) {
         if (!basicService.findById(id).isPresent()) {
             log.error("Id " + id + " is not existed");
            return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok(basicService.save(functor));
+        return ResponseEntity.ok(basicService.save(relation));
     }
 
-    @DeleteMapping("/functors/{id}")
+    @DeleteMapping("/relations/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         if (!basicService.findById(id).isPresent()) {
             log.error("Id " + id + " is not existed");

@@ -1,5 +1,6 @@
 package com.theoremfactory.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class ClassProperty {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "class_detail", joinColumns = { @JoinColumn(name = "class_property_id")},
             inverseJoinColumns = { @JoinColumn(name = "class_id")})
+    @JsonIgnore
     private List<Class> classes = new ArrayList<>();
 
 }
