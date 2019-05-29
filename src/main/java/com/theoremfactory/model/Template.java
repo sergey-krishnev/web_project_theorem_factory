@@ -20,7 +20,7 @@ public class Template {
     @NotNull
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "tmodel_id")
     @JsonIgnore
     private Tmodel tmodel;
