@@ -224,4 +224,19 @@
         </insert>
     </changeSet>
 
+    <changeSet id="insertFunctorDetail" author="user">
+        <insert tableName="functor_detail">
+            <column name="functor_property_id" value="1"/>
+            <column name="functor_id" value="1"/>
+        </insert>
+        <insert tableName="functor_detail">
+            <column name="functor_property_id" value="1"/>
+            <column name="functor_id" value="2"/>
+        </insert>
+        <insert tableName="functor_detail">
+            <column name="functor_property_id" value="1"/>
+            <column name="functor_id" value="3"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

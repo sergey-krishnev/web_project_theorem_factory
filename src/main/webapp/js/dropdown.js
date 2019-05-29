@@ -1,26 +1,26 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunctorFunction() {
-    document.getElementById("myDropdown1").classList.toggle("show");
+    document.getElementById("FunctorDropdown").classList.toggle("show");
 }
 
 function myRelationFunction() {
-    document.getElementById("myDropdown2").classList.toggle("show");
+    document.getElementById("RelationDropdown").classList.toggle("show");
 }
 
 function myClassFunction() {
-    document.getElementById("myDropdown3").classList.toggle("show");
+    document.getElementById("ClassDropdown").classList.toggle("show");
 }
 
 function myTmodelFunction() {
-    document.getElementById("myDropdown4").classList.toggle("show");
+    document.getElementById("TmodelDropdown").classList.toggle("show");
 }
 
 function filterFunctorFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput1");
+    input = document.getElementById("FunctorInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown1");
+    div = document.getElementById("FunctorDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;
@@ -34,9 +34,9 @@ function filterFunctorFunction() {
 
 function filterRelationFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput2");
+    input = document.getElementById("RelationInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown2");
+    div = document.getElementById("RelationDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;
@@ -50,9 +50,9 @@ function filterRelationFunction() {
 
 function filterClassFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput3");
+    input = document.getElementById("ClassInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown3");
+    div = document.getElementById("ClassDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;
@@ -66,9 +66,9 @@ function filterClassFunction() {
 
 function filterTmodelFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput4");
+    input = document.getElementById("TmodelInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown4");
+    div = document.getElementById("TmodelDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;

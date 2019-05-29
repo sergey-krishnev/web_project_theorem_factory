@@ -3,16 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>THEOREM FACTORY</title>
+    <title>ARTIFORM</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/pricing/">
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 
     <style>
@@ -36,7 +33,7 @@
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Theorem factory</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal">ARTIFORM</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="#">Features</a>
         <a class="p-2 text-dark" href="#">Enterprise</a>
@@ -59,35 +56,42 @@
             </div>
             <div class="card-body">
                 <div class="dropdown btn-lg btn-block">
-                    <button onclick="myFunctorFunction()" class="dropbtn btn-lg btn-block">Select functor:</button>
-                    <div id="myDropdown1" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput1" class="myInput"
+                    <button onclick="myFunctorFunction()" class="dropbtn btn-lg btn-block"><i
+                            class="fas fa-chevron-down"></i> Select functor:
+                    </button>
+                    <div id="FunctorDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="FunctorInput" class="myInput"
                                onkeyup="filterFunctorFunction()">
-                        <a href="#about">
+                        <a href="#">
                             <div lang="latex">
                                 $T_1$
                             </div>
+                            <p style="display: none">group</p>
                         </a>
-                        <a href="#base">
+                        <a href="#">
                             <div lang="latex">
                                 $T_2$
                             </div>
+                            <p style="display: none">subgroups</p>
                         </a>
-                        <a href="#blog">
+                        <a href="#">
                             <div lang="latex">
                                 $T_3$
                             </div>
+                            <p style="display: none">1</p>
                         </a>
                     </div>
                 </div>
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li>Short</li>
-                    <li>Description</li>
-                    <li>Of</li>
-                    <li>Functor</li>
+                    <li>Name:</li>
+                    <li>Description:</li>
+                    <li>Properties:</li>
+                    <li>aaa</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
-                <button type="button" class="btn btn-lg btn-block btn-primary">Add new functor</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new
+                    functor
+                </button>
             </div>
         </div>
         <div class="card mb-4 shadow-sm">
@@ -96,9 +100,12 @@
             </div>
             <div class="card-body">
                 <div class="dropdown btn-lg btn-block">
-                    <button onclick="myRelationFunction()" class="dropbtn btn-lg btn-block">Select relation:</button>
-                    <div id="myDropdown2" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput2" class="myInput" onkeyup="filterRelationFunction()">
+                    <button onclick="myRelationFunction()" class="dropbtn btn-lg btn-block"><i
+                            class="fas fa-chevron-down"></i> Select relation:
+                    </button>
+                    <div id="RelationDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="RelationInput" class="myInput"
+                               onkeyup="filterRelationFunction()">
                         <a href="#about">
                             <div lang="latex">
                                 $\Sigma$
@@ -118,7 +125,9 @@
                     <li>Relation</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
-                <button type="button" class="btn btn-lg btn-block btn-primary">Add new relation</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new
+                    relation
+                </button>
             </div>
         </div>
         <div class="card mb-4 shadow-sm">
@@ -127,9 +136,12 @@
             </div>
             <div class="card-body">
                 <div class="dropdown btn-lg btn-block">
-                    <button onclick="myClassFunction()" class="dropbtn btn-lg btn-block">Select class:</button>
-                    <div id="myDropdown3" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput3" class="myInput" onkeyup="filterClassFunction()">
+                    <button onclick="myClassFunction()" class="dropbtn btn-lg btn-block"><i
+                            class="fas fa-chevron-down"></i> Select class:
+                    </button>
+                    <div id="ClassDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="ClassInput" class="myInput"
+                               onkeyup="filterClassFunction()">
                         <a href="#base">
                             <div lang="latex">
                                 $X_1$
@@ -144,20 +156,33 @@
                     <li>Class</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
-                <button type="button" class="btn btn-lg btn-block btn-primary">Add new class</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new class
+                </button>
             </div>
         </div>
     </div>
-    <div class="card-deck mb-1 text-center">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Load files:</h4>
+            </div>
+            <div class="card-body">
+                <iframe src="frames/drag-and-drop-reload.html" width="250" height="350">
+                    <p>Your browser does not support iframes.</p>
+                </iframe>
+            </div>
+        </div>
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">T-MODEL</h4>
             </div>
             <div class="card-body">
                 <div class="dropdown btn-lg btn-block">
-                    <button onclick="myTmodelFunction()" class="dropbtn btn-lg btn-block">Select T-model:</button>
-                    <div id="myDropdown4" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput4" class="myInput"
+                    <button onclick="myTmodelFunction()" class="dropbtn btn-lg btn-block"><i
+                            class="fas fa-chevron-down"></i> Select T-model:
+                    </button>
+                    <div id="TmodelDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="TmodelInput" class="myInput"
                                onkeyup="filterTmodelFunction()">
                         <a href="#about">
                             <div lang="latex">
@@ -183,10 +208,34 @@
                     <li>T-model</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
-                <button type="button" class="btn btn-lg btn-block btn-primary">Add new T-model</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new
+                    T-model
+                </button>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Download files:</h4>
+            </div>
+            <div class="card-body">
+                <iframe src="frames/download.html" width="250" height="350">
+                    <p>Your browser does not support iframes.</p>
+                </iframe>
             </div>
         </div>
     </div>
+
+    <!--Templates-->
+    <script id="functor-template" type="text/x-jQuery-tmpl">
+    <a href="#\${id}">
+        <div lang="latex">
+            \${name}
+        </div>
+            <p style="display: none">\${description}</p>
+    </a>
+    </script>
+
+
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
@@ -225,5 +274,7 @@
     </footer>
 </div>
 <script src="js/dropdown.js"></script>
+<script src="js/mainController.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 </body>
 </html>
