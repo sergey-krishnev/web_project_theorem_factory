@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ARTIFORM</title>
 
-    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
 
 
     <style>
@@ -62,7 +62,7 @@
                     <div id="FunctorDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="FunctorInput" class="myInput"
                                onkeyup="filterFunctorFunction()">
-                        <a href="#" ng-repeat="functor in functors">
+                        <a ng-repeat="functor in functors" href="{{functor.id}}" onclick="checkFunctor(this)">
                             <div lang="latex">
                                 {{functor.name}}
                             </div>
@@ -70,11 +70,10 @@
                         </a>
                     </div>
                 </div>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Name:</li>
-                    <li>Description:</li>
+                <ul class="list-unstyled mt-3 mb-4" id="functor-information" >
+                    <li>Name: </li>
+                    <li>Description: </li>
                     <li>Properties:</li>
-                    <li>aaa</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
                 <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new
@@ -94,7 +93,7 @@
                     <div id="RelationDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="RelationInput" class="myInput"
                                onkeyup="filterRelationFunction()">
-                        <a href="#" ng-repeat="relation in relations">
+                        <a ng-repeat="relation in relations" href="{{relation.id}}" onclick="checkRelation(this)">
                             <div lang="latex">
                                 {{relation.name}}
                             </div>
@@ -102,11 +101,10 @@
                         </a>
                     </div>
                 </div>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Short</li>
-                    <li>Description</li>
-                    <li>Of</li>
-                    <li>Relation</li>
+                <ul class="list-unstyled mt-3 mb-4" id="relation-information">
+                    <li>Name: </li>
+                    <li>Description: </li>
+                    <li>Properties:</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
                 <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new
@@ -126,19 +124,18 @@
                     <div id="ClassDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="ClassInput" class="myInput"
                                onkeyup="filterClassFunction()">
-                        <a href="#" ng-repeat="class in classes">
+                        <a ng-repeat="clazz in classes" href="{{clazz.id}}" onclick="checkClass(this)">
                             <div lang="latex">
-                                {{class.name}}
+                                {{clazz.name}}
                             </div>
-                            <p style="display: none">{{class.description}}</p>
+                            <p style="display: none">{{clazz.description}}</p>
                         </a>
                     </div>
                 </div>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Short</li>
-                    <li>Description</li>
-                    <li>Of</li>
-                    <li>Class</li>
+                <ul class="list-unstyled mt-3 mb-4" id="class-information">
+                    <li>Name: </li>
+                    <li>Description: </li>
+                    <li>Properties:</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
                 <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new class
@@ -177,7 +174,7 @@
                         </a>
                     </div>
                 </div>
-                <ul class="list-unstyled mt-3 mb-4">
+                <ul class="list-unstyled mt-3 mb-4" id="tmodel-information">
                     <li>Short</li>
                     <li>Description</li>
                     <li>Of</li>
