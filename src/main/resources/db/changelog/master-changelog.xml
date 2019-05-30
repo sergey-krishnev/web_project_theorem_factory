@@ -56,7 +56,7 @@
             <column name="name" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="varchar(270)">
+            <column name="description" type="varchar(300)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -189,33 +189,33 @@
 
     <changeSet id="insertFunctor" author="user">
         <insert tableName="functor">
-            <column name="name" value="$T_1$"/>
+            <column name="name" value="T_1"/>
             <column name="description" value="group"/>
         </insert>
         <insert tableName="functor">
-            <column name="name" value="$T_2$"/>
+            <column name="name" value="T_2"/>
             <column name="description" value="subgroups"/>
         </insert>
         <insert tableName="functor">
-            <column name="name" value="$T_3$"/>
+            <column name="name" value="T_3"/>
             <column name="description" value="1"/>
         </insert>
     </changeSet>
 
     <changeSet id="insertRelation" author="user">
         <insert tableName="relation">
-            <column name="name" value="$\Sigma$"/>
-            <column name="description" value="\parbox{6cm}{ binary relation on groups such that for any group G the pair of its subgroups (H, K) $\in \Sigma_G$, if and only if $(|G:H|,|G:K|)=1$.}"/>
+            <column name="name" value="\Sigma"/>
+            <column name="description" value="binary\,relation\,on\,groups\,such\,that\,for\,any\,group\,G\,the\,pair\,of\,its\,subgroups\,(H, K)\,\in\,\Sigma_G,\,if\,and\,only\,if\,(|G:H|,|G:K|)=1."/>
         </insert>
         <insert tableName="relation">
-            <column name="name" value="$\Omega$"/>
-            <column name="description" value="\parbox{6cm}{binary relation on class $\mathfrak{S}$ of solvable subgroups such that for any group G the pair of its subgroups (H, K) $\in \Omega_G$ if and only if H and K - non-conjugate maximal subgroups of G or one of the H or K subgroups coincides with G.}"/>
+            <column name="name" value="\Omega"/>
+            <column name="description" value="binary\,relation\,on\,class\,\mathfrak{S}\,of\,solvable\,subgroups\,such\,that\,for\,any\,group\,G\,the\,pair\,of\,its\,subgroups\,(H, K)\,\in\,\Omega_G\,if\,and\,only\,if\,H\,and\,K\,-\,non-conjugate maximal\,subgroups\,of\,G\,or\,one\,of\,the\,H\,or\,K\,subgroups\,coincides\,with\,G."/>
         </insert>
     </changeSet>
 
     <changeSet id="insertClass" author="user">
         <insert tableName="class">
-            <column name="name" value="$Class_1$"/>
+            <column name="name" value="Class_1"/>
             <column name="description" value="with custom properties"/>
         </insert>
     </changeSet>
@@ -310,37 +310,37 @@
 
     <changeSet id="insertTmodel" author="user">
         <insert tableName="tmodel">
-            <column name="name" value="$\wp_1$"/>
+            <column name="name" value="\wp_1"/>
             <column name="functor_id" value="1"/>
             <column name="relation_id" value="1"/>
             <column name="class_id" value="1"/>
         </insert>
         <insert tableName="tmodel">
-            <column name="name" value="$\wp_2$"/>
+            <column name="name" value="\wp_2"/>
             <column name="functor_id" value="2"/>
             <column name="relation_id" value="1"/>
             <column name="class_id" value="1"/>
         </insert>
         <insert tableName="tmodel">
-            <column name="name" value="$\wp_3$"/>
+            <column name="name" value="\wp_3"/>
             <column name="functor_id" value="3"/>
             <column name="relation_id" value="1"/>
             <column name="class_id" value="1"/>
         </insert>
         <insert tableName="tmodel">
-            <column name="name" value="$\wp_4$"/>
+            <column name="name" value="\wp_4"/>
             <column name="functor_id" value="1"/>
             <column name="relation_id" value="2"/>
             <column name="class_id" value="1"/>
         </insert>
         <insert tableName="tmodel">
-            <column name="name" value="$\wp_5$"/>
+            <column name="name" value="\wp_5"/>
             <column name="functor_id" value="2"/>
             <column name="relation_id" value="2"/>
             <column name="class_id" value="1"/>
         </insert>
         <insert tableName="tmodel">
-            <column name="name" value="$\wp_6$"/>
+            <column name="name" value="\wp_6"/>
             <column name="functor_id" value="3"/>
             <column name="relation_id" value="2"/>
             <column name="class_id" value="1"/>

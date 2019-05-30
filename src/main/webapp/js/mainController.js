@@ -31,7 +31,10 @@ function checkFunctor(entity) {
     loadJSON(location.href + 'functors/' + id,
         function(data) { console.log(data.functorProperties[0]);
             let html = '';
-            html +='<li><b>Name:</b> <div lang="latex">'+ data.name +'</div></li>';
+            let renderName = katex.renderToString(data.name, {
+                throwOnError: false
+            });
+            html +='<li><b>Name:</b> <div lang="latex">'+ renderName +'</div></li>';
             html +='<li><b>Description:</b> '+ data.description +' </li>';
             html +='<li><b>Properties:</b></li>';
             html +='<li>';
@@ -53,8 +56,14 @@ function checkRelation(entity) {
     loadJSON(location.href + 'relations/' + id,
         function(data) { console.log(data.relationProperties[0]);
             let html = '';
-            html +='<li><b>Name:</b> <div lang="latex">'+ data.name +'</div></li>';
-            html +='<li><b>Description:</b> '+ data.description +' </li>';
+            let renderName = katex.renderToString(data.name, {
+                throwOnError: false
+            });
+            let renderDescription = katex.renderToString(data.description, {
+                throwOnError: false
+            });
+            html +='<li><b>Name:</b> <div lang="latex">'+ renderName +'</div></li>';
+            html +='<li><b>Description:</b> '+ renderDescription +' </li>';
             html +='<li><b>Properties:</b></li>';
             html +='<li>';
             for(let i=0; i<data.relationProperties.length; i++) {
@@ -75,7 +84,10 @@ function checkClass(entity) {
     loadJSON(location.href + 'classes/' + id,
         function(data) { console.log(data.classProperties[0]);
             let html = '';
-            html +='<li><b>Name:</b> <div lang="latex">'+ data.name +'</div></li>';
+            let renderName = katex.renderToString(data.name, {
+                throwOnError: false
+            });
+            html +='<li><b>Name:</b> <div lang="latex">'+ renderName +'</div></li>';
             html +='<li><b>Description:</b> '+ data.description +' </li>';
             html +='<li><b>Properties:</b></li>';
             html +='<li>';
