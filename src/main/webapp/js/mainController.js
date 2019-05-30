@@ -1,24 +1,24 @@
-function selectFunctor() {
-
-}
-
-// ----receive function----v
-function get_json(url, callback) {
-    http.get(url, function(res) {
-        var body = '';
-        res.on('data', function(chunk) {
-            body += chunk;
-        });
-
-        res.on('end', function() {
-            var response = JSON.parse(body);
-// call function ----v
-            callback(response);
-        });
+var mainApp = angular.module('mainApp', []);
+mainApp.controller('FunctorCtrl', function ($scope, $http){
+    $http.get(location.href + 'functors').success(function(data) {
+        $scope.functors = data;
     });
-}
+});
 
-// -----------the url---v         ------------the callback---v
-var mydata = get_json("/functors", function (resp) {
-    console.log(resp);
+mainApp.controller('RelationCtrl', function ($scope, $http) {
+    $http.get(location.href + 'relations').success(function(data) {
+        $scope.relations = data;
+    });
+});
+
+mainApp.controller('ClassCtrl', function ($scope, $http) {
+    $http.get(location.href + 'classes').success(function(data) {
+        $scope.classes = data;
+    });
+});
+
+mainApp.controller('TmodelCtrl', function ($scope, $http) {
+    $http.get(location.href + 'tmodels').success(function(data) {
+        $scope.tmodels = data;
+    });
 });

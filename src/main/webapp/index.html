@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="mainApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ARTIFORM</title>
 
     <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -55,30 +55,18 @@
                 <h4 class="my-0 font-weight-normal">Functor</h4>
             </div>
             <div class="card-body">
-                <div class="dropdown btn-lg btn-block">
+                <div class="dropdown btn-lg btn-block" ng-controller='FunctorCtrl'>
                     <button onclick="myFunctorFunction()" class="dropbtn btn-lg btn-block"><i
                             class="fas fa-chevron-down"></i> Select functor:
                     </button>
                     <div id="FunctorDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="FunctorInput" class="myInput"
                                onkeyup="filterFunctorFunction()">
-                        <a href="#">
+                        <a href="#" ng-repeat="functor in functors">
                             <div lang="latex">
-                                $T_1$
+                                {{functor.name}}
                             </div>
-                            <p style="display: none">group</p>
-                        </a>
-                        <a href="#">
-                            <div lang="latex">
-                                $T_2$
-                            </div>
-                            <p style="display: none">subgroups</p>
-                        </a>
-                        <a href="#">
-                            <div lang="latex">
-                                $T_3$
-                            </div>
-                            <p style="display: none">1</p>
+                            <p style="display: none">{{functor.description}}</p>
                         </a>
                     </div>
                 </div>
@@ -99,22 +87,18 @@
                 <h4 class="my-0 font-weight-normal">Relation</h4>
             </div>
             <div class="card-body">
-                <div class="dropdown btn-lg btn-block">
+                <div class="dropdown btn-lg btn-block" ng-controller='RelationCtrl'>
                     <button onclick="myRelationFunction()" class="dropbtn btn-lg btn-block"><i
                             class="fas fa-chevron-down"></i> Select relation:
                     </button>
                     <div id="RelationDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="RelationInput" class="myInput"
                                onkeyup="filterRelationFunction()">
-                        <a href="#about">
+                        <a href="#" ng-repeat="relation in relations">
                             <div lang="latex">
-                                $\Sigma$
+                                {{relation.name}}
                             </div>
-                        </a>
-                        <a href="#base">
-                            <div lang="latex">
-                                $\Omega$
-                            </div>
+                            <p style="display: none">{{relation.description}}</p>
                         </a>
                     </div>
                 </div>
@@ -135,17 +119,18 @@
                 <h4 class="my-0 font-weight-normal">Class</h4>
             </div>
             <div class="card-body">
-                <div class="dropdown btn-lg btn-block">
+                <div class="dropdown btn-lg btn-block" ng-controller='ClassCtrl'>
                     <button onclick="myClassFunction()" class="dropbtn btn-lg btn-block"><i
                             class="fas fa-chevron-down"></i> Select class:
                     </button>
                     <div id="ClassDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="ClassInput" class="myInput"
                                onkeyup="filterClassFunction()">
-                        <a href="#base">
+                        <a href="#" ng-repeat="class in classes">
                             <div lang="latex">
-                                $X_1$
+                                {{class.name}}
                             </div>
+                            <p style="display: none">{{class.description}}</p>
                         </a>
                     </div>
                 </div>
@@ -177,27 +162,18 @@
                 <h4 class="my-0 font-weight-normal">T-MODEL</h4>
             </div>
             <div class="card-body">
-                <div class="dropdown btn-lg btn-block">
+                <div class="dropdown btn-lg btn-block" ng-controller='TmodelCtrl'>
                     <button onclick="myTmodelFunction()" class="dropbtn btn-lg btn-block"><i
                             class="fas fa-chevron-down"></i> Select T-model:
                     </button>
                     <div id="TmodelDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="TmodelInput" class="myInput"
                                onkeyup="filterTmodelFunction()">
-                        <a href="#about">
+                        <a href="#" ng-repeat="tmodel in tmodels">
                             <div lang="latex">
-                                $T-model_1$
+                                {{tmodel.name}}
                             </div>
-                        </a>
-                        <a href="#base">
-                            <div lang="latex">
-                                $T-model_2$
-                            </div>
-                        </a>
-                        <a href="#blog">
-                            <div lang="latex">
-                                $T-model_3$
-                            </div>
+                            <p style="display: none">{{tmodel.description}}</p>
                         </a>
                     </div>
                 </div>
@@ -224,17 +200,6 @@
             </div>
         </div>
     </div>
-
-    <!--Templates-->
-    <script id="functor-template" type="text/x-jQuery-tmpl">
-    <a href="#\${id}">
-        <div lang="latex">
-            \${name}
-        </div>
-            <p style="display: none">\${description}</p>
-    </a>
-    </script>
-
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
@@ -275,6 +240,5 @@
 </div>
 <script src="js/dropdown.js"></script>
 <script src="js/mainController.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 </body>
 </html>
