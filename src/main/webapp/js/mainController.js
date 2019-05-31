@@ -102,6 +102,40 @@ function checkClass(entity) {
 
 }
 
+function checkTModel(entity) {
+    event.preventDefault();
+    document.getElementById("TmodelDropdown").classList.remove("show");
+    id = entity.getAttribute("href");
+    loadJSON(location.href + 'tmodels/' + id,
+        function(data) { console.log(data);
+            let html = '';
+            let renderName = katex.renderToString(data.name, {
+                throwOnError: false
+            });
+            html +='<li><b>Name:</b> <div lang="latex">'+ renderName +'</div></li>';
+            html +='<li><b>Functor properties:</b></li>';
+            html +='<li>';
+            for(let i=0; i<data.functorProperties.length; i++) {
+                html += ' ' + data.functorProperties[i].name + ' '
+            }
+            html +='</li>';
+            html +='<li><b>Relation properties:</b></li>';
+            html +='<li>';
+            for(let i=0; i<data.relationProperties.length; i++) {
+                html += ' ' + data.relationProperties[i].name + ' '
+            }
+            html +='</li>';
+            html +='<li><b>Class properties:</b></li>';
+            html +='<li>';
+            for(let i=0; i<data.classProperties.length; i++) {
+                html += ' ' + data.classProperties[i].name + ' '
+            }
+            html +='</li>';
+            document.getElementById('tmodel-information').innerHTML = html;
+        },
+        function(xhr) { console.error(xhr); }
+    );
+}
 
 function loadJSON(path, success, error) {
     var xhr = new XMLHttpRequest();

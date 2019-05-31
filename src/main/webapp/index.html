@@ -175,19 +175,18 @@
                     <div id="TmodelDropdown" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="TmodelInput" class="myInput"
                                onkeyup="filterTmodelFunction()">
-                        <a href="#" ng-repeat="tmodel in tmodels">
+                        <a ng-repeat="tmodel in tmodels" href="{{tmodel.id}}" onclick="checkTModel(this)">
                             <div lang="latex">
-                                {{tmodel.name}}
+                                ${{tmodel.name}}$
                             </div>
-                            <p style="display: none">{{tmodel.description}}</p>
                         </a>
                     </div>
                 </div>
                 <ul class="list-unstyled mt-3 mb-4" id="tmodel-information">
-                    <li>Short</li>
-                    <li>Description</li>
-                    <li>Of</li>
-                    <li>T-model</li>
+                    <li>Name: </li>
+                    <li>Functor properties:</li>
+                    <li>Relation properties:</li>
+                    <li>Class properties:</li>
                 </ul>
                 <h1 class="card-title pricing-card-title">or</h1>
                 <button type="button" class="btn btn-lg btn-block btn-primary"><i class="fas fa-plus"></i> Add new
