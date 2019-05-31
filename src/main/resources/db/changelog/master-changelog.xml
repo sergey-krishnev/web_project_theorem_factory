@@ -145,26 +145,7 @@
             <column name="name" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
-            <column name="functor_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="relation_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="class_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
-
-        <addForeignKeyConstraint baseTableName="tmodel" baseColumnNames="functor_id"
-                                 constraintName="fk_functor_id_tmodel"
-                                 referencedTableName="functor" referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="tmodel" baseColumnNames="relation_id"
-                                 constraintName="fk_relation_id_tmodel"
-                                 referencedTableName="relation" referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="tmodel" baseColumnNames="class_id"
-                                 constraintName="fk_class_id_tmodel"
-                                 referencedTableName="class" referencedColumnNames="id"/>
 
         <createTable tableName="template">
             <column name="id" type="bigint" autoIncrement="true">
@@ -176,13 +157,83 @@
             <column name="content" type="varchar(300)">
                 <constraints nullable="false"/>
             </column>
+        </createTable>
+
+        <createTable tableName="tmodel_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="template_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
             <column name="tmodel_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="template" baseColumnNames="tmodel_id"
-                                 constraintName="fk_tmodel_id_template"
+        <addForeignKeyConstraint baseTableName="tmodel_detail" baseColumnNames="template_id"
+                                 constraintName="fk_template_id_tmodel_detail"
+                                 referencedTableName="template" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="tmodel_detail" baseColumnNames="tmodel_id"
+                                 constraintName="fk_tmodel_id_tmodel_detail"
+                                 referencedTableName="tmodel" referencedColumnNames="id"/>
+
+
+        <createTable tableName="tmodel_functor_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="functor_property_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tmodel_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="tmodel_functor_detail" baseColumnNames="functor_property_id"
+                                 constraintName="fk_functor_property_id_tmodel_functor_detail"
+                                 referencedTableName="functor_property" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="tmodel_functor_detail" baseColumnNames="tmodel_id"
+                                 constraintName="fk_tmodel_id_tmodel_functor_detail"
+                                 referencedTableName="tmodel" referencedColumnNames="id"/>
+
+        <createTable tableName="tmodel_relation_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="relation_property_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tmodel_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="tmodel_relation_detail" baseColumnNames="relation_property_id"
+                                 constraintName="fk_relation_property_id_tmodel_relation_detail"
+                                 referencedTableName="relation_property" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="tmodel_relation_detail" baseColumnNames="tmodel_id"
+                                 constraintName="fk_tmodel_id_tmodel_relation_detail"
+                                 referencedTableName="tmodel" referencedColumnNames="id"/>
+
+        <createTable tableName="tmodel_class_detail">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="class_property_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tmodel_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="tmodel_class_detail" baseColumnNames="class_property_id"
+                                 constraintName="fk_class_property_id_tmodel_class_detail"
+                                 referencedTableName="class_property" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="tmodel_class_detail" baseColumnNames="tmodel_id"
+                                 constraintName="fk_tmodel_id_tmodel_class_detail"
                                  referencedTableName="tmodel" referencedColumnNames="id"/>
 
     </changeSet>
@@ -205,11 +256,11 @@
     <changeSet id="insertRelation" author="user">
         <insert tableName="relation">
             <column name="name" value="\Sigma"/>
-            <column name="description" value="binary\,relation\,on\,groups\,such\,that\,for\,any\,group\,G\,the\,pair\,of\,its\,subgroups\,(H, K)\,\in\,\Sigma_G,\,if\,and\,only\,if\,(|G:H|,|G:K|)=1."/>
+            <column name="description" value="\parbox{6cm}{ binary relation on groups such that for any group G the pair of its subgroups (H, K) $\in \Sigma_G$, if and only if $(|G:H|,|G:K|)=1$.}"/>
         </insert>
         <insert tableName="relation">
             <column name="name" value="\Omega"/>
-            <column name="description" value="binary\,relation\,on\,class\,\mathfrak{S}\,of\,solvable\,subgroups\,such\,that\,for\,any\,group\,G\,the\,pair\,of\,its\,subgroups\,(H, K)\,\in\,\Omega_G\,if\,and\,only\,if\,H\,and\,K\,-\,non-conjugate maximal\,subgroups\,of\,G\,or\,one\,of\,the\,H\,or\,K\,subgroups\,coincides\,with\,G."/>
+            <column name="description" value="\parbox{6cm}{binary relation on class $\mathfrak{S}$ of solvable subgroups such that for any group G the pair of its subgroups (H, K) $\in \Omega_G$ if and only if H and K - non-conjugate maximal subgroups of G or one of the H or K subgroups coincides with G.}"/>
         </insert>
     </changeSet>
 
@@ -308,49 +359,75 @@
         </insert>
     </changeSet>
 
+
+
     <changeSet id="insertTmodel" author="user">
         <insert tableName="tmodel">
             <column name="name" value="\wp_1"/>
-            <column name="functor_id" value="1"/>
-            <column name="relation_id" value="1"/>
-            <column name="class_id" value="1"/>
-        </insert>
-        <insert tableName="tmodel">
-            <column name="name" value="\wp_2"/>
-            <column name="functor_id" value="2"/>
-            <column name="relation_id" value="1"/>
-            <column name="class_id" value="1"/>
-        </insert>
-        <insert tableName="tmodel">
-            <column name="name" value="\wp_3"/>
-            <column name="functor_id" value="3"/>
-            <column name="relation_id" value="1"/>
-            <column name="class_id" value="1"/>
-        </insert>
-        <insert tableName="tmodel">
-            <column name="name" value="\wp_4"/>
-            <column name="functor_id" value="1"/>
-            <column name="relation_id" value="2"/>
-            <column name="class_id" value="1"/>
-        </insert>
-        <insert tableName="tmodel">
-            <column name="name" value="\wp_5"/>
-            <column name="functor_id" value="2"/>
-            <column name="relation_id" value="2"/>
-            <column name="class_id" value="1"/>
-        </insert>
-        <insert tableName="tmodel">
-            <column name="name" value="\wp_6"/>
-            <column name="functor_id" value="3"/>
-            <column name="relation_id" value="2"/>
-            <column name="class_id" value="1"/>
         </insert>
     </changeSet>
 
     <changeSet id="insertTemplate" author="user">
         <insert tableName="template">
             <column name="name" value="Lemma 1"/>
-            <column name="content" value="{\it Let $\mathfrak{F} = \mathfrak{N}_p \mathfrak{X}$, where $\mathfrak{X}$ - formation, and $\mathfrak{X} \subseteq \mathfrak{N}$.Then $\mathfrak{F}$ is $ForTheorem$NameSpecificRelation_2^{ForTheorem$NameSpecificFunctor}$ - recognizable formation in class $\mathfrak{S}.$  } \\\\ "/>
+            <column name="content" value="{\it Let $\mathfrak{F} = \mathfrak{N}_p \mathfrak{X}$, where $\mathfrak{X}$ - formation, and $\mathfrak{X} \subseteq \mathfrak{N}$.Then $\mathfrak{F}$ is $NameSpecificRelation_2^{NameSpecificFunctor}$ - recognizable formation in class $\mathfrak{S}.$  } \\\\ "/>
+        </insert>
+        <insert tableName="template">
+            <column name="name" value="Lemma 2"/>
+            <column name="content" value="{\it Any formation of nilpotent groups is $NameSpecificRelation_2^{NameSpecificFunctor}$ - recognizable.}  \\\\ "/>
+        </insert>
+        <insert tableName="template">
+            <column name="name" value="Theorem 1"/>
+            <column name="content" value="{\it Any local subformation of formation $\mathfrak{N}^2$ of all metanilpotent groups is $NameSpecificRelation_3^{NameSpecificFunctor}$ - recognizable.} \\\\"/>
+        </insert>
+        <insert tableName="template">
+            <column name="name" value="Theorem 2"/>
+            <column name="content" value="{\it Class $\mathfrak{N}^n (n \geqslant 1)$ is $ForTheorem$NameSpecificRelation_{n+1}^{ForTheorem$NameSpecificFunctor}$ - recognizable.} \\\\"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertTmodelDetails" author="user">
+        <insert tableName="tmodel_functor_detail">
+            <column name="functor_property_id" value="1"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_relation_detail">
+            <column name="relation_property_id" value="1"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_relation_detail">
+            <column name="relation_property_id" value="2"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_class_detail">
+            <column name="class_property_id" value="1"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_class_detail">
+            <column name="class_property_id" value="2"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_class_detail">
+            <column name="class_property_id" value="3"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet id="insertTmodelDetail" author="user">
+        <insert tableName="tmodel_detail">
+            <column name="template_id" value="1"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_detail">
+            <column name="template_id" value="2"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_detail">
+            <column name="template_id" value="3"/>
+            <column name="tmodel_id" value="1"/>
+        </insert>
+        <insert tableName="tmodel_detail">
+            <column name="template_id" value="4"/>
             <column name="tmodel_id" value="1"/>
         </insert>
     </changeSet>

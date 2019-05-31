@@ -18,19 +18,28 @@ public class Tmodel {
     @NotNull
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "functor_id")
-    private Functor functor;
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tmodel_functor_detail", joinColumns = { @JoinColumn(name = "tmodel_id")},
+            inverseJoinColumns = { @JoinColumn(name = "functor_property_id")})
+    private List<FunctorProperty> functorProperties = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "relation_id")
-    private Relation relation;
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tmodel_relation_detail", joinColumns = { @JoinColumn(name = "tmodel_id")},
+            inverseJoinColumns = { @JoinColumn(name = "relation_property_id")})
+    private List<RelationProperty> relationProperties = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class clazz;
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tmodel_class_detail", joinColumns = { @JoinColumn(name = "tmodel_id")},
+            inverseJoinColumns = { @JoinColumn(name = "class_property_id")})
+    private List<ClassProperty> classProperties = new ArrayList<>();
 
-    @OneToMany(mappedBy = "tmodel")
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tmodel_detail", joinColumns = { @JoinColumn(name = "tmodel_id")},
+            inverseJoinColumns = { @JoinColumn(name = "template_id")})
     private List<Template> templates = new ArrayList<>();
 
 }

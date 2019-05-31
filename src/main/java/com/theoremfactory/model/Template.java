@@ -5,6 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,9 +22,11 @@ public class Template {
     @NotNull
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "tmodel_id")
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tmodel_detail", joinColumns = { @JoinColumn(name = "template_id")},
+            inverseJoinColumns = { @JoinColumn(name = "tmodel_id")})
     @JsonIgnore
-    private Tmodel tmodel;
+    private List<Tmodel> tmodels = new ArrayList<>();
 
 }
