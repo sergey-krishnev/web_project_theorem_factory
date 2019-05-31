@@ -256,11 +256,11 @@
     <changeSet id="insertRelation" author="user">
         <insert tableName="relation">
             <column name="name" value="\Sigma"/>
-            <column name="description" value="\parbox{6cm}{ binary relation on groups such that for any group G the pair of its subgroups (H, K) $\in \Sigma_G$, if and only if $(|G:H|,|G:K|)=1$.}"/>
+            <column name="description" value="binary relation on groups such that for any group G the pair of its subgroups (H, K) $\in \Sigma_G$, if and only if $(|G:H|,|G:K|)=1$."/>
         </insert>
         <insert tableName="relation">
             <column name="name" value="\Omega"/>
-            <column name="description" value="\parbox{6cm}{binary relation on class $\mathfrak{S}$ of solvable subgroups such that for any group G the pair of its subgroups (H, K) $\in \Omega_G$ if and only if H and K - non-conjugate maximal subgroups of G or one of the H or K subgroups coincides with G.}"/>
+            <column name="description" value="binary relation on class $\mathfrak{S}$ of solvable subgroups such that for any group G the pair of its subgroups (H, K) $\in \Omega_G$ if and only if H and K - non-conjugate maximal subgroups of G or one of the H or K subgroups coincides with G."/>
         </insert>
     </changeSet>
 
@@ -370,19 +370,19 @@
     <changeSet id="insertTemplate" author="user">
         <insert tableName="template">
             <column name="name" value="Lemma 1"/>
-            <column name="content" value="{\it Let $\mathfrak{F} = \mathfrak{N}_p \mathfrak{X}$, where $\mathfrak{X}$ - formation, and $\mathfrak{X} \subseteq \mathfrak{N}$.Then $\mathfrak{F}$ is $NameSpecificRelation_2^{NameSpecificFunctor}$ - recognizable formation in class $\mathfrak{S}.$  } \\\\ "/>
+            <column name="content" value="Let $\mathfrak{F} = \mathfrak{N}_p \mathfrak{X}$, where $\mathfrak{X}$ - formation, and $\mathfrak{X} \subseteq \mathfrak{N}$.Then $\mathfrak{F}$ is $NameSpecificRelation_2^{NameSpecificFunctor}$ - recognizable formation in class $\mathfrak{S}.$"/>
         </insert>
         <insert tableName="template">
             <column name="name" value="Lemma 2"/>
-            <column name="content" value="{\it Any formation of nilpotent groups is $NameSpecificRelation_2^{NameSpecificFunctor}$ - recognizable.}  \\\\ "/>
+            <column name="content" value="Any formation of nilpotent groups is $NameSpecificRelation_2^{NameSpecificFunctor}$ - recognizable."/>
         </insert>
         <insert tableName="template">
             <column name="name" value="Theorem 1"/>
-            <column name="content" value="{\it Any local subformation of formation $\mathfrak{N}^2$ of all metanilpotent groups is $NameSpecificRelation_3^{NameSpecificFunctor}$ - recognizable.} \\\\"/>
+            <column name="content" value="Any local subformation of formation $\mathfrak{N}^2$ of all metanilpotent groups is $NameSpecificRelation_3^{NameSpecificFunctor}$ - recognizable."/>
         </insert>
         <insert tableName="template">
             <column name="name" value="Theorem 2"/>
-            <column name="content" value="{\it Class $\mathfrak{N}^n (n \geqslant 1)$ is $ForTheorem$NameSpecificRelation_{n+1}^{ForTheorem$NameSpecificFunctor}$ - recognizable.} \\\\"/>
+            <column name="content" value="Class $\mathfrak{N}^n (n \geqslant 1)$ is $NameSpecificRelation_{n+1}^{NameSpecificFunctor}$ - recognizable."/>
         </insert>
     </changeSet>
 

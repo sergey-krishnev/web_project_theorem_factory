@@ -104,7 +104,7 @@
                                onkeyup="filterRelationFunction()">
                         <a ng-repeat="relation in relations" href="{{relation.id}}" onclick="checkRelation(this)">
                             <div lang="latex">
-                                ${{relation.name}}$
+                            {{relation.name}}
                             </div>
                             <p style="display: none">{{relation.description}}</p>
                         </a>
@@ -207,10 +207,11 @@
     </div>
 
     <p>
-        <button type = "button" class = "btn btn-primary btn-lg btn-block">
+        <button type = "button" class = "btn btn-primary btn-lg btn-block" onclick="generateTemplate()">
             GENERATE
         </button>
     </p>
+    <p id="generated-file-preview"></p>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
